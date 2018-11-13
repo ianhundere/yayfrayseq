@@ -1,20 +1,16 @@
 const monomeGrid = require("monome-grid");
 
-// initialize 2d led array
-function create2DArray(sizeY, sizeX) {
-  let arr = [];
-  for (let y = 0; y < sizeY; y++) {
-    arr[y] = [];
-    for (let x = 0; x < sizeX; x++) arr[y][x] = 0;
-  }
-  return arr;
-}
-
 async function run() {
   let grid = await monomeGrid(); // grid identifier is passed
 
+  // initialize 2d led array
+  let led = [];
+  for (let y = 0; y < 16; y++) {
+    led[y] = [];
+    for (let x = 0; x < 16; x++) led[y][x] = 0;
+  }
+
   clear = true;
-  let step = create2DArray(6, 16);
 
   const refresh = function() {
     if (clear) {
